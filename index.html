@@ -1,0 +1,120 @@
+
+<style>
+    .ring-arc { cursor: pointer; transition: opacity .18s; }
+    .ring-arc:hover { opacity: .88; }
+    .info-card {
+      background: var(--color-background-secondary);
+      border-radius: var(--border-radius-lg);
+      padding: 14px 18px;
+      margin-top: 8px;
+      border-left: 3px solid #0C447C;
+      border: 1px solid var(--color-border-tertiary);
+      border-left: 3px solid #0C447C;
+    }
+    .ic-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+    .ic-sub { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 10px; }
+    .ic-item { font-size: 13px; color: var(--color-text-secondary); padding: 5px 0 5px 10px; border-left: 2px solid var(--color-border-secondary); margin-bottom: 4px; line-height: 1.5; }
+    .hint { font-size: 11px; color: var(--color-text-tertiary); text-align: center; margin: 0; }
+    </style>
+    
+    <div style="padding:8px 0">
+        <div class="header">
+            <div class="title">Projeto — Engenharia de Software</div>
+            <div class="subtitle">Aplicação baseada no conceito do Círculo Dourado</div>
+            <div class="members">
+              Leandro Thiago Ribeiro · Bruno Michels · Isack Perovano · Kediel Farias · Pedro Machado
+            </div>
+          </div>
+    <svg width="100%" viewBox="0 0 680 460">
+    
+    <!-- Outer ring: Quem? dark navy -->
+    <circle class="ring-arc" id="r-quem" cx="340" cy="230" r="210" fill="#042C53" onclick="show('quem')"/>
+    <!-- 3rd ring: O quê? -->
+    <circle class="ring-arc" id="r-oq"   cx="340" cy="230" r="165" fill="#0C447C" onclick="show('oq')"/>
+    <!-- 2nd ring: Como -->
+    <circle class="ring-arc" id="r-como" cx="340" cy="230" r="115" fill="#378ADD" onclick="show('como')"/>
+    <!-- Inner: Por quê? light blue -->
+    <circle class="ring-arc" id="r-porq" cx="340" cy="230" r="65"  fill="#B5D4F4" onclick="show('porq')"/>
+    
+    <!-- Separators -->
+    <circle cx="340" cy="230" r="209" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <circle cx="340" cy="230" r="165" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+    <circle cx="340" cy="230" r="115" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+    <circle cx="340" cy="230" r="65"  fill="none" stroke="rgba(255,255,255,0.3)"  stroke-width="1"/>
+    
+    <!-- Quem? label — band y≈20..65, center ~42 -->
+    <text x="340" y="36"  text-anchor="middle" font-size="14" font-weight="500" fill="#E6F1FB" font-family="var(--font-sans)">Quem?</text>
+    <text x="340" y="52"  text-anchor="middle" font-size="11" fill="#85B7EB"  font-family="var(--font-sans)">Para e com quem</text>
+    
+    <!-- O quê? label — band y≈65..115, center ~90 -->
+    <text x="340" y="87"  text-anchor="middle" font-size="14" font-weight="500" fill="#E6F1FB" font-family="var(--font-sans)">O quê?</text>
+    <text x="340" y="103" text-anchor="middle" font-size="11" fill="#85B7EB"  font-family="var(--font-sans)">O resultado</text>
+    
+    <!-- Como label — band y≈115..165, center ~140 -->
+    <text x="340" y="138" text-anchor="middle" font-size="14" font-weight="500" fill="white"   font-family="var(--font-sans)">Como</text>
+    <text x="340" y="154" text-anchor="middle" font-size="11" fill="#B5D4F4"  font-family="var(--font-sans)">O processo</text>
+    
+    <!-- Por quê? center -->
+    <text x="340" y="224" text-anchor="middle" font-size="14" font-weight="500" fill="#042C53" font-family="var(--font-sans)">Por quê?</text>
+    <text x="340" y="242" text-anchor="middle" font-size="11" fill="#185FA5"  font-family="var(--font-sans)">O propósito</text>
+    
+    </svg>
+    
+    <p class="hint">Clique em uma camada para explorar o projeto</p>
+    <div id="panel"></div>
+    </div>
+    
+    <script>
+    const D = {
+      quem:{
+        title:'Quem? — Para e com quem', sub:'Os stakeholders do sistema', color:'#042C53',
+        items:[
+          'Advogados e defensores públicos que precisam calcular penas com agilidade e precisão',
+          'Juízes e promotores de justiça como apoio à fundamentação de decisões',
+          'Estudantes e professores de direito — ferramenta de estudo e simulação de casos reais',
+          'Time de desenvolvimento — engenheiros aplicando ES em um problema socialmente relevante'
+        ]
+      },
+      oq:{
+        title:'O quê? — O resultado', sub:'O que a aplicação entrega', color:'#0C447C',
+        items:[
+          'Calculadora de dosimetria penal com as 3 fases (pena-base, provisória e definitiva)',
+          'Calculadora de datas: aplica percentuais de acréscimo/redução (ex: 3 anos + 10% → 3 anos, 1 mês e 18 dias)',
+          'Exibição passo a passo do cálculo para fins de fundamentação e auditoria jurídica',
+          'Interface web acessível, intuitiva e responsiva'
+        ]
+      },
+      como:{
+        title:'Como? — O processo', sub:'Como o sistema opera internamente', color:'#185FA5',
+        items:[
+          'Algoritmo das 3 fases da dosimetria conforme o art. 68 do Código Penal brasileiro',
+          'Motor de cálculo de datas com conversão precisa de anos, meses e dias + aplicação de percentuais',
+          'Validação de entradas para garantir resultados juridicamente corretos e consistentes',
+          'Desenvolvimento com boas práticas de ES: clean code, testes, versionamento e documentação'
+        ]
+      },
+      porq:{
+        title:'Por quê? — O propósito', sub:'A causa central que justifica o sistema', color:'#378ADD',
+        items:[
+          'Democratizar o acesso a um cálculo que exige conhecimento técnico-jurídico especializado',
+          'Reduzir erros manuais que podem impactar diretamente a liberdade e os direitos de pessoas',
+          'Promover transparência e segurança jurídica no sistema penal brasileiro',
+          'Demonstrar como a Engenharia de Software pode resolver problemas reais e socialmente impactantes'
+        ]
+      }
+    };
+    
+    let cur = null;
+    function show(k) {
+      const p = document.getElementById('panel');
+      if (cur === k) { cur = null; p.innerHTML = ''; return; }
+      cur = k;
+      const d = D[k];
+      p.innerHTML = `<div class="info-card" style="border-left-color:${d.color}">
+        <div class="ic-title">${d.title}</div>
+        <div class="ic-sub">${d.sub}</div>
+        ${d.items.map(i=>`<div class="ic-item">${i}</div>`).join('')}
+      </div>`;
+    }
+    </script>
+    
