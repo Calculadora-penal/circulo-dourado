@@ -73,11 +73,8 @@ Projeto desenvolvido para a disciplina de **Engenharia de Software**.
 git clone https://github.com/Calculadora-penal/circulo-dourado.git
 cd circulo-dourado
 
-Aqui vai um README pronto, profissional e direto pra você usar no repo 🚀
+```
 
----
-
-````markdown
 # 🎯 Círculo Dourado — Calculadora Penal
 
 Aplicação interativa baseada no conceito do **Círculo Dourado**, utilizada para apresentar de forma clara e estratégica um projeto de Engenharia de Software voltado ao domínio jurídico.
